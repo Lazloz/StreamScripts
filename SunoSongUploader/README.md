@@ -1,4 +1,5 @@
-# YouTube Song Uploader
+# Suno to Youtube Song Upload Script
+Create a video from a suno song automatically and upload it to Youtube. It creates a static 16:9 image for your video and bundles it with your song.
 
 This script was written by [Lazloz](https://twitch.tv/Lazloz)
 
