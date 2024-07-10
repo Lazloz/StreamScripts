@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Token Receiver</title>
+    <script>
+        // Function to parse fragment parameters from the URL
+        function getFragmentParameters() {
+            var fragment = window.location.hash.substring(1);
+            var params = {};
+            var paramPairs = fragment.split('&');
+            for (var i = 0; i < paramPairs.length; i++) {
+                var pair = paramPairs[i].split('=');
+                params[pair[0]] = decodeURIComponent(pair[1]);
+            }
+            return params;
+        }
+
+        // Main function to extract access token and send it to server
+        function extractAccessToken() {
+            var params = getFragmentParameters();
+            var accessToken = params['access_token'];
+
+            // Send the accessToken to your server
+            if (accessToken) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://localhost:8008/receive-token', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({ access_token: accessToken }));
+				
+                // Optionally, inform the user that the token has been sent
+				var el = document.querySelector('.text');
+                el.innerHTML = 'Access token sent to server.';
+            } else {
+                var el = document.querySelector('.text');
+                el.innerHTML = 'Access token not found.';
+            }
+        }
+
+        // Run the extraction function on page load
+        window.onload = extractAccessToken;
+    </script>
+</head>
+<body>
+    <h1>Access Token Receiver</h1>
+    <p class="text">Attempting to send access token to script.</p>
+</body>
+</html>
