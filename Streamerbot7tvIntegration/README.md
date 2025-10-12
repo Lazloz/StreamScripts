@@ -30,7 +30,7 @@ U0JBRR+LCAAAAAAABADNWltvq0qWfm+p/8PWllqakdq7uZjYtNQPxjEYX0gMNmAm5wEojAnXY4wd3Dr/
 3. Go to the **Console** tab
 4. Type this command and press Enter:
    ```javascript
-   localStorage.getItem("7tv-auth-token")
+   localStorage.getItem("7tv-token")
    ```
 5. Copy the token that appears (it should be a long string)
 6. In Streamer.bot, change the "Set Argument" sub-action before your C# code:
